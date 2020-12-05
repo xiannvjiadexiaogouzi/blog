@@ -15,6 +15,8 @@ tags:
 **整体思路：**
 本地调试完的hexo项目文件通过git推送给vps，然后直接部署在vps上使用域名来访问，这样一个属于自己的blog就可以完成了
 
+<!-- more -->
+
 ![](hexo-vps.png)
 
 ## 本地环境
@@ -57,16 +59,17 @@ npm install // 安装依赖
 ```
 **配置hexo**
 既然生成了博客了，那自然需要自己来配置一下自己的博客的信息，打开_config.yml文件进行配置；
-具体配置参考官方文档：https://hexo.io/zh-cn/docs/configuration
+具体配置参考[官方文档](https://hexo.io/zh-cn/docs/configuration)
 
 **下载主题**
 主题我挑了很久，最后选择综合症的我只有选了好多人推荐的next主题
-next官方文档：
-https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/README.md
+[next官方文档](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/README.md)
 
 **下载**
-根据文档给的方式使用git clone
-`git clone https://github.com/theme-next/hexo-theme-next themes/next`
+根据文档给的方式使用`git clone`
+```shell
+git clone https://github.com/theme-next/hexo-theme-next themes/next
+```
 
 试了几次，我一直报错 
 `'RPC failed; curl 18 transfer closed with outstanding read data remaining'`
@@ -80,23 +83,25 @@ https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/README.md
 `git clone git@github.com/theme-next/hexo-theme-next themes/next`
 
 **主题配置**
-直接在项目文档里clone或者单独clone后将next文件夹复制进项目的themes文件夹里
-```
+直接在项目文档里`clone`或者单独`clone`后将`next`文件夹复制进项目的`themes`文件夹里
+```shell
 .
 ├── themes //主题
-|   ├── landscape //默认主题
-|   └── next //新clone的next主题
+    ├── landscape //默认主题
+    └── next //新clone的next主题
 ```
 并在hexo配置文件中更改主题
-```
-...
+```json
+// ...
 theme: next //更改主题
-...
+// ...
 ```
 其他配置暂时就不说了，以后会再次具体写
+
 ## vps环境
 ### vps
 如何购买vps不在本文详细叙述，不论在阿里云还是腾讯云还是海外譬如搬瓦工之类购买，都是差不多的，vps大同小异，不过好像是国内的服务器配置域名是需要实名认证的，但是海外的就不需要；
+
 重新说明我的vps安装的系统是debian 8，如果有和我一样的小伙伴那么我的接下里的配置就很有参考价值了，当然其他版本的系统原理和流程其实也是大同小异；
 
 再多说一句，系统不同，安装包的命令也是不同的：
@@ -116,49 +121,36 @@ theme: next //更改主题
 按照提示输入密码，出现`[root@主机名~]#`，登陆成功 😀
 
 ### Git
-#### 安装git
-`apt-get install git`
+#### 安装
+```shell
+# 安装git
+apt install git
 
-查看版本号，用以确认安装成功
-`git -version`
+# 查看版本号，用以确认安装成功
+git -version
+```
  
 #### 创建git用户
 为什么要创建git用户？
 老实说，如果是自己一个人用的vps，那么不用git用户其实也没啥，但是创建的意义就是用git用户来管理git和代码，而不用root，这样更安全；
 
-创建git用户
-`adduser git`
-按照提示设置密码
+```shell
+# 创建git用户
+adduser git
+# 按照提示设置密码
 
-赋予git用户sudo权限
-`chmod 740 /etc/sudoers #修改权限`
-`vim /etc/sudoers #编辑该文件`
+# 赋予git用户sudo权限
+chmod 740 /etc/sudoers #修改权限
+vim /etc/sudoers #编辑该文件
 
-- 此时报错，应该是我没有vim命令
-安装vim
-`apt-get install vim`
-
-- 此时我报错了，出现没有 /etc/sudoers 的提示
-`chmod: cannot access ‘/etc/sudoers’: No such file or directory`
-因该是没有安装sudo模块
-**安装sudo**
-`apt-get install sudo`
-再次执行上述操作，成功 😃
-
-修改如下内容
-```
-# User privilege specification
-root    ALL=(ALL:ALL) ALL
-```
-修改后
-```
+# 😃 成功后，修改如下内容
 # User privilege specification
 root    ALL=(ALL:ALL) ALL
 git     ALL=(ALL:ALL) ALL #添加此行内容
-```
 
-修改回文件的权限
-`chmod 440 /etc/sudoers`
+# 修改回文件的权限
+chmod 440 /etc/sudoers
+```
 
 **切换git用户，配置ssh**
 下载和上传代码的都是使用git这个用户，但我们又不想要每次都输入密码，怎么办？
@@ -208,8 +200,8 @@ git     ALL=(ALL:ALL) ALL #添加此行内容
 #!/bin/sh
 git --work-tree=/home/git/blog/hexo --git-dir=/home/git/blog/blog.git checkout -f
 ```
---work-tree 对应项目部署根目录
---git-dir 对应版本库目录
+`--work-tree` 对应项目部署根目录
+`--git-dir` 对应版本库目录
 保存退出
 
 添加post-receive文件的可执行权限
@@ -230,7 +222,7 @@ blog.git的拥有者为git用户
 参考：https://www.cnblogs.com/navysummer/p/9842065.html
 
 多说一句
-执行`ll`命令，确保以上blog.git、.ssh、blog目录的用户组权限为git:git
+执行`ll`命令，确保以上`blog.git`、`.ssh`、`blog`目录的用户组权限为`git:git`
 `ll /home/git`
 
 如果不是，执行

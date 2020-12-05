@@ -14,6 +14,8 @@ tags:
 看了网上很多domain的推荐，最后在NameSilo上购买了域名人生当中的第一个域名（thisisluis.top），不得不说**namesilo**还是十分便宜的；
 然后将域名解析到我的服务器ip（配置解析后有延迟，但我这边只过了几分钟就生效了），然后照着用CloudFlare免费上了https，记录一下过程
 
+<!-- more -->
+
 #### 域名(NameSilo)
 为了便于记忆，人们采用域名的方式代替ip，由此产生了域名解析。
 类型分为:A ,AAAA , CNAME , MX , TXT/SPF , SRV , CAA记录解析。

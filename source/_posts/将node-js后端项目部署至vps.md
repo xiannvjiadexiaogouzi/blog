@@ -25,6 +25,8 @@ tags:
 - node.js
 - mongodb
 
+<!-- more -->
+
 ### node.js
 - 更新apt-get
 `sudo apt-get update`
