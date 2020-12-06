@@ -15,9 +15,9 @@ tags:
 **整体思路：**
 本地调试完的hexo项目文件通过git推送给vps，然后直接部署在vps上使用域名来访问，这样一个属于自己的blog就可以完成了
 
-<!-- more -->
-
 ![](hexo-vps.png)
+
+<!-- more -->
 
 ## 本地环境
 ### Git
@@ -36,16 +36,19 @@ https://hexo.io/zh-cn/
 
 #### 安装hexo
 首先确保本地安装好git和node.js，在终端中输入
-`npm install -g hexo-cli`
+```bash
+npm install -g hexo-cli
+```
 
 #### 创建hexo项目（建站）
-```
+```bash
 hexo init <folder> // 初始化项目文件夹；<folder>为自定义hexo项目名称
 cd <folder> // 打开项目文件夹
 npm install // 安装依赖
 ```
+
 完成上述步骤，查看自己的项目文件夹内，目录应为：
-```
+```bash
 .
 ├── node_modules //依赖包
 ├── scaffolds // 模版
@@ -57,6 +60,7 @@ npm install // 安装依赖
 ├── package.json // npm配置文件（可以不用管它）
 └── _config.yml //hexo配置文件
 ```
+
 **配置hexo**
 既然生成了博客了，那自然需要自己来配置一下自己的博客的信息，打开_config.yml文件进行配置；
 具体配置参考[官方文档](https://hexo.io/zh-cn/docs/configuration)
@@ -67,7 +71,7 @@ npm install // 安装依赖
 
 **下载**
 根据文档给的方式使用`git clone`
-```shell
+```bash
 git clone https://github.com/theme-next/hexo-theme-next themes/next
 ```
 
@@ -84,13 +88,14 @@ git clone https://github.com/theme-next/hexo-theme-next themes/next
 
 **主题配置**
 直接在项目文档里`clone`或者单独`clone`后将`next`文件夹复制进项目的`themes`文件夹里
-```shell
+```bash
 .
 ├── themes //主题
     ├── landscape //默认主题
     └── next //新clone的next主题
 ```
 并在hexo配置文件中更改主题
+
 ```json
 // ...
 theme: next //更改主题
@@ -122,7 +127,7 @@ theme: next //更改主题
 
 ### Git
 #### 安装
-```shell
+```bash
 # 安装git
 apt install git
 
@@ -134,7 +139,7 @@ git -version
 为什么要创建git用户？
 老实说，如果是自己一个人用的vps，那么不用git用户其实也没啥，但是创建的意义就是用git用户来管理git和代码，而不用root，这样更安全；
 
-```shell
+```bash
 # 创建git用户
 adduser git
 # 按照提示设置密码
@@ -196,7 +201,7 @@ chmod 440 /etc/sudoers
 `vim post-receive`
 
 文件中写入：
-```
+```bash
 #!/bin/sh
 git --work-tree=/home/git/blog/hexo --git-dir=/home/git/blog/blog.git checkout -f
 ```
@@ -226,7 +231,9 @@ blog.git的拥有者为git用户
 `ll /home/git`
 
 如果不是，执行
-`chown git:git -R /home/git/blog`
+```bash
+chown git:git -R /home/git/blog
+```
 
 ### nginx
 #### 安装 nginx

@@ -28,25 +28,27 @@ tags:
 <!-- more -->
 
 ### node.js
-- 更新apt-get
-`sudo apt-get update`
+```bash
+# 更新apt-get
+sudo apt-get update
 
-- 安装node
-`sudo apt-get install nodejs`
+# 安装node
+sudo apt-get install nodejs
 
-- 安装npm
-`sudo apt-get install npm`
+# 安装npm
+sudo apt-get install npm
 
-- 全局安装n（npm版本管理器）
-`sudo npm install n -g`
+# 全局安装n（npm版本管理器）
+sudo npm install n -g
 
-- 安装最新稳定版node
-`n stable`
+# 安装最新稳定版node
+n stable
 
-- 查看版本
-`node -v`
-`npm -v`
-返回版本号表示安装成功
+# 查看版本
+node -v
+npm -v
+# 返回版本号表示安装成功
+```
 
 ### mongodb
 
@@ -55,16 +57,24 @@ tags:
 我的 vps 的系统为debian 8, 注意在指南中对应自己的系统！
 
 - 为mongodb管理包导入公钥
-`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4`
+```bash
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+```
 
 - 为mongodb建立版本文件夹 **对应 debian 8 系统*
-`echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list`
+```bash
+echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+```
 
-- 更新本地apt-get
-`sudo apt-get update`
+- 更新本地`apt-get`
+```bash
+sudo apt-get update
+```
 
 - 安装最新版mongodb
-`sudo apt-get install -y mongodb-org`
+```bash
+sudo apt-get install -y mongodb-org
+```
 
 默认安装的文件路径：
 - 数据文件 `/var/lib/mongodb`
@@ -74,19 +84,27 @@ tags:
 安装完成后，需要运行一下来确定是否已经安装完成
 
 - 启动mongodb
-`sudo service mongod start`
+```bash
+sudo service mongod start
+```
 
 - 查看mongodb的log文件，确认是否开启
-`cat /var/log/mongodb/mongod.log`
-如果里面最后出现：
-`[initandlisten] waiting for connections on port 27017`
-表示mongodb已经开启
+```bash
+cat /var/log/mongodb/mongod.log
+# 如果里面最后出现：
+[initandlisten] waiting for connections on port 27017
+# 表示mongodb已经开启
+```
 
 - 停止mongodb
-`sudo service mongod stop`
+```bash
+sudo service mongod stop
+```
 
 - 重启mongodb
-`sudo service mongod restart`
+```bash
+sudo service mongod restart
+```
 
 ## 上传项目
 本来上传我在想是要用古早的ftp上传吗？后来我发现了pod，尤大早些年写了自用的一个repo工具

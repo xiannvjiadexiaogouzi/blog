@@ -42,9 +42,13 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: true
+post_asset_folder: true # asset like img can be used directly
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
+## code block
 highlight:
   enable: true
   line_number: false
@@ -147,6 +151,7 @@ leancloud_counter_security:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git #vps用户名
-  repo: ssh://git@68.168.131.20:28172/home/git/blog/blog.git
+  type: git
+  repo: ssh://git@68.168.131.20/home/git/www/blog/blog.git
   branch: master #分支
+  message: ''
