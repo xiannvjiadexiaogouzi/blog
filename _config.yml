@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://thisisluis.top
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -143,8 +143,11 @@ feed:
 ## leancloud couter security
 leancloud_counter_security:
   enable_sync: true
-  app_id: YXxlCjnLYCrVe74ROdB3JGUE-9Nh9j0Va
-  app_key: 4SmwjAKAn7MKAX16SICYyr5G
+  # internatonal app
+  # app_id: h1hqw5FWsRpsXhU5UwlAUDIV-MdYXbMMI
+  # app_key: Td5NpF8oAprfmIu1kskkyxWN
+  app_id: YXxlCjnLYCrVe74ROdB3JGUE-9Nh9j0Va # <your app id>
+  app_key: 4SmwjAKAn7MKAX16SICYyr5G # <your app key>
   username: 
   password:
 

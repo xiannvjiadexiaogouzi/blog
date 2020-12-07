@@ -50,10 +50,10 @@ darkmode: true
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/favicon-16x16-next.png
-  medium: /images/favicon-32x32-next.png
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
+  small: /images/logo/favicon-16x16-next.png
+  medium: /images/logo/favicon-32x32-next.png
+  apple_touch_icon: /images/logo/apple-touch-icon-next.png
+  safari_pinned_tab: /images/logo/logo.svg
   #android_manifest: /manifest.json
 
 # Custom Logo (Warning: Do not support scheme Mist)
@@ -86,6 +86,7 @@ menu:
   #categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
   schedule: /schedule/ || fa fa-calendar
+  rss: /rss.xml || fa fa-rss
   sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
 
@@ -103,8 +104,8 @@ menu_settings:
 
 sidebar:
   # Sidebar Position.
-  position: left
-  #position: right
+  # position: left
+  position: right
 
   # Manual define the sidebar width. If commented, will be default for:
   # Muse | Mist: 320
@@ -127,7 +128,7 @@ sidebar:
 avatar:
   # Replace the default image and set the url here.
   # url: /images/avatar.gif
-  url: /images/avatar.png
+  url: /images/logo/avatar.png
   # If true, the avatar will be dispalyed in circle.
   rounded: true
   # If true, the avatar will be rotated with the cursor.
@@ -666,10 +667,10 @@ add_this_id:
 
 # Google Analytics
 google_analytics:
-  tracking_id: # <app_id>
+  tracking_id: G-KKVBJTR570 # <app_id>
   # By default, NexT will load an external gtag.js script on your site.
   # If you only need the pageview feature, set the following option to true to get a better performance.
-  only_pageview: false
+  only_pageview: true
 
 # Baidu Analytics
 baidu_analytics: # <app_id>
@@ -684,14 +685,17 @@ cnzz_siteid:
 # You can visit https://www.leancloud.cn to get AppID and AppKey.
 leancloud_visitors:
   enable: true
+  # internatonal app
+  # app_id: h1hqw5FWsRpsXhU5UwlAUDIV-MdYXbMMI # <your app id>
+  # app_key: Td5NpF8oAprfmIu1kskkyxWN # <your app key>
   app_id: YXxlCjnLYCrVe74ROdB3JGUE-9Nh9j0Va # <your app id>
   app_key: 4SmwjAKAn7MKAX16SICYyr5G # <your app key>
   # Required for apps from CN region
-  server_url: https://yxxlcjnl.lc-cn-e1-shared.com # <your server url>
+  server_url: # <your server url>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
-  security: true
+  security: false
 
 # Another tool to show number of visitors to each article.
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
@@ -705,12 +709,12 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
-  enable: false
+  enable: true
   total_visitors: true
   total_visitors_icon: fa fa-user
   total_views: true
   total_views_icon: fa fa-eye
-  post_views: true
+  post_views: false
   post_views_icon: far fa-eye
 
 

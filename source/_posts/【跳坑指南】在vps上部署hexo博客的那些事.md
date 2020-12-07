@@ -203,7 +203,7 @@ chmod 440 /etc/sudoers
 文件中写入：
 ```bash
 #!/bin/sh
-git --work-tree=/home/git/blog/hexo --git-dir=/home/git/blog/blog.git checkout -f
+git --work-tree=/home/git/www/blog/hexo --git-dir=/home/git/www/blog/blog.git checkout -f
 ```
 `--work-tree` 对应项目部署根目录
 `--git-dir` 对应版本库目录
